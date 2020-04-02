@@ -4,11 +4,11 @@ variables:
   Parameters.RestoreBuildProjects: 'project'
 
 steps:
-- task: DotNetCoreCLI@2
-  displayName: Restore
+- task: UseDotNet@2
+  displayName: 'Use .Net Core SDK v$(dotNetCoreVersion)'
   inputs:
-    command: restore
-    projects: '$(Parameters.RestoreBuildProjects)'
+    packageType: 'sdk'
+    version: '$(dotNetCoreVersion)'
 
 - task: DotNetCoreCLI@2
   displayName: Build
